@@ -6,6 +6,6 @@ University Final project
 - Evyatar Yossef
 - Roy asraf
 
-# pip install Flask==0.12.2
-# Postman HTTP Client: https://www.getpostman.com/
+## pip install Flask==0.12.2
+## Postman HTTP Client: https://www.getpostman.com/
 
