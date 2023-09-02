@@ -45,34 +45,6 @@ class Directors:
 
         # Get the index from the key using
         # hash function
-        hashed_key = hash(id) % self.size
-
-        # Get the bucket corresponding to index
-        bucket = self.hash_table[hashed_key]
-
-        found_key = False
-        for index, record in enumerate(bucket):
-            record_key, record_stocks = record
-
-            # check if the bucket has same id as
-            # the id being searched
-            if record_key == id:
-                found_key = True
-                break
-
-        # If the bucket has same key as the id being searched,
-        # Return the stocks found
-        # Otherwise indicate there was no record found
-        if found_key:
-            return record_stocks
-        else:
-            return "No record found"
-
-    # Remove a stocks with specific id
-    def delete_stocks(self, stocks):
-
-        # Get the index from the id using
-        # hash function
         hashed_id = hash(id) % self.size
 
         # Get the bucket corresponding to index
@@ -82,15 +54,38 @@ class Directors:
         for index, record in enumerate(bucket):
             record_id, record_stocks = record
 
-            # check if the bucket has same id as the key to be deleted
+            # check if the bucket has same id as
+            # the id being searched
             if record_id == id:
                 found_id = True
                 break
+
+        # If the bucket has same id as the id being searched,
+        # Return the stocks found
+        # Otherwise indicate there was no record found
+        if found_id:
+            return record_stocks
+        else:
+            return "No record found"
+
+    # Remove a stocks with specific id
+    def delete_stocks(self, id):
+        hashed_id = hash(id) % self.size
+        bucket = self.hash_table[hashed_id]
+
+        found_id = False
+        for index, record in enumerate(bucket):
+            record_id, _ = record
+            if record_id == id:
+                found_id = True
+                break
+
         if found_id:
             bucket.pop(index)
-        return
-
+        else:
+            print(f"No record found for ID: {id}")
     # To print the items of hash map
+    
     def __str__(self):
         return "".join(str(item) for item in self.hash_table)
 
