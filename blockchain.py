@@ -1,8 +1,4 @@
 
-
-# pip install Flask==0.12.2
-# Postman HTTP Client: https://www.getpostman.com/
-
 # Importing the libraries
 import datetime
 import hashlib
