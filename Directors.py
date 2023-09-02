@@ -3,6 +3,7 @@
 class Directors:
 
     # Create empty bucket list of given size with all the stocks of the company
+    # Constructor
     def __init__(self, size, stocks_company):
         self.size = size
         self.hash_table = self.create_buckets()
@@ -16,25 +17,25 @@ class Directors:
 
         # Get the index from the key
         # using hash function
-        hashed_key = hash(id) % self.size
+        hashed_id = hash(id) % self.size
 
         # Get the bucket corresponding to index
-        bucket = self.hash_table[hashed_key]
+        bucket = self.hash_table[hashed_id]
 
-        found_key = False
+        found_id = False
         for index, record in enumerate(bucket):
-            record_key, record_val = record
+            record_id, record_stocks = record
 
-            # check if the bucket has same key as
-            # the key to be inserted
-            if record_key == id:
-                found_key = True
+            # check if the bucket has same id as
+            # the id to be inserted
+            if record_id == id:
+                found_id = True
                 break
 
         # If the bucket has same key as the key to be inserted,
         # Update the key value
         # Otherwise append the new key-value pair to the bucket
-        if found_key:
+        if found_id:
             bucket[index] = (id, stocks)
         else:
             bucket.append((id, stocks))
